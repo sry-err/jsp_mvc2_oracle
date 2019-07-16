@@ -1,0 +1,16 @@
+CREATE TABLE tbl_qna (
+qnum NUMBER PRIMARY KEY,
+qwriter varchar2(50) NOT NULL,
+qtitle varchar2(100) NOT NULL,
+qcontent varchar2(2000) DEFAULT NULL,
+qreadcount NUMBER DEFAULT 0,
+qdate DATE DEFAULT SYSDATE,
+filename varchar2(1000) DEFAULT NULL,
+thumbnail varchar2(1000) DEFAULT NULL
+);
+
+CREATE SEQUENCE seq_qna_qnum
+INCREMENT BY 1
+START WITH 1
+nocycle
+nocache;
