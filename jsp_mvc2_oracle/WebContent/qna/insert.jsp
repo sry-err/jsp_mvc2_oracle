@@ -7,10 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="./insertSave.do" name="">
+	<form method="post" action="./insertSave.do" name="" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
-				<td colspan="2">QnA Board Insert</td>
+				<td colspan="2">QnA Board Insert &nbsp;&nbsp;
+					<a href="./list.do">Go List</a>
+				</td>
+					
 			</tr>
 			<tr>
 				<td>작성자 :</td>

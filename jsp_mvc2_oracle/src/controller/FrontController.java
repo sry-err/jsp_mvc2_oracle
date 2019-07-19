@@ -37,9 +37,54 @@ public class FrontController extends HttpServlet {
 			action=new InsertAction();
 			try {
 				action.execute(request, response);
-				destPage = "/qna/list.jsp";
+				destPage = "list.do";
 			} catch (Exception e) {
 				System.out.println(">>> insertAction/execute Error");
+				e.printStackTrace();
+			}
+		}else if(path.equals("/qna/list.do")) {
+			action = new ListAction();
+			try {
+				action.execute(request, response);
+				destPage = "/qna/list.jsp";
+			} catch (Exception e) {
+				System.out.println(">>> listAction Error");
+				e.printStackTrace();
+			}
+		}else if(path.equals("/qna/detail.do")) {
+			action = new DetailAction();
+			try {
+				action.execute(request, response);
+				destPage = "/qna/detail.jsp";
+			} catch (Exception e) {
+				System.out.println(">>> detailAction Error");
+				e.printStackTrace();
+			}
+		}else if(path.equals("/qna/modify.do")){
+				try {
+					action = new ModifyAction();
+					action.execute(request, response);
+					destPage="/qna/modify.jsp";
+				} catch (Exception e) {
+					System.out.println(">>> modifyAction Error");
+					e.printStackTrace();
+				}
+		}else if(path.equals("/qna/modifySave.do")) {
+			try {
+				action = new ModifySaveAction();
+				action.execute(request, response);
+				destPage="detail.do";
+			} catch (Exception e) {
+				System.out.println(">>> modifySaveAction Error");
+				e.printStackTrace();
+			}
+		}else if(path.equals("/qna/remove.do")) {
+			action = new removeAction();
+			try {
+				action.execute(request, response);
+				destPage = "list.do";
+			} catch (Exception e) {
+				System.out.println(">>> removeAction Error");
 				e.printStackTrace();
 			}
 		}

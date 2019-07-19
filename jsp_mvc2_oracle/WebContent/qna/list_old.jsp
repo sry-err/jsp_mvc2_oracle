@@ -14,7 +14,6 @@
 	ArrayList<QnaDTO> list = (ArrayList<QnaDTO>)request.getAttribute("qlist");
 %>
 <body>
-<c:set var="list" value="${qlist }"/>
 <table border="1">
 	<tr>
 		<th colspan="4">Qna List</th>
@@ -28,33 +27,7 @@
 		<th>조회수</th>
 		<th>작성일</th>
 	</tr>
-	<c:forEach var="dto" items="${list }">
-	<tr>
-			<td>${dto.qnum }</td>
-			<td>
-			<c:choose>
-				<c:when test="${dto.filename != null && dto.filename != '' }">
-					<c:choose>
-						<c:when test="${dto.thumbnail != null && dto.thumbnail != '' }">
-							<img src="../upload/${dto.thumbnail}" width="96" >
-						</c:when>
-						<c:otherwise>
-							<img src="../upload/file_96.png" width="96">
-						</c:otherwise>
-					</c:choose>
-				</c:when>
-				<c:otherwise>
-					<img src="../upload/noentry_96.png" width="96">
-				</c:otherwise>
-			</c:choose>
-			</td>
-			<td><a href="./detail.do?cnum=${dto.qnum }">${dto.qtitle }</a></td>
-			<td>${dto.qwriter }</td>
-			<td>${dto.qreadcount }</td>
-			<td>${dto.qdate}</td>
-		</tr>
-	</c:forEach>
-<%-- 	<%
+	<%
 		QnaDTO qdto = new QnaDTO();
 		int qnum, qreadcount;
 		String qwriter, qtitle, thumbnail;
@@ -68,11 +41,18 @@
 			qwriter = qdto.getQwriter();
 			qreadcount = qdto.getQreadcount();
 			qdate = qdto.getQdate();
-	%> --%>
-		
-<%-- 	<%
+	%>
+		<tr>
+			<td><%=qnum %></td>
+			<td>썸네일 부분</td>
+			<td><a href="./detail.do?cnum=<%=qnum %>"><%=qtitle %></a></td>
+			<td><%=qwriter %></td>
+			<td><%=qreadcount %></td>
+			<td><%=qdate %></td>
+		</tr>
+	<%
 		}
-	%> --%>
+	%>
 </table>
 </body>
 </html>
